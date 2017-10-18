@@ -1,0 +1,84 @@
+.row {
+  margin-top: 20px;
+}
+
+.logo img{
+  margin-left: auto;
+  margin-right:auto;
+}
+
+.stylish-input-group .input-group-addon{
+  background: white !important;
+  border-color: #DE7C4F;
+  color: #DE7C4F;
+}
+
+.stylish-input-group .form-control{
+  border-right:0;
+  box-shadow:0 0 0;
+  border-color:#DE7C4F;
+  color: #5E3822;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+  color: #5E3822;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: #5E3822;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: #5E3822;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #5E3822;
+}
+:-ms-input-placeholder { /* Microsoft Edge */
+  color: #5E3822;
+}
+
+.stylish-input-group button{
+  border:0;
+  background:transparent;
+}
+
+.user-icon {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 5px;
+}
+
+nav {
+  background-color:transparent;
+  border-color: #DE7C4F;
+}
+
+.navbar-default .navbar-nav > .active{
+  color: #5E3822;
+  background-color: #DE7C4F;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #5E3822;
+  background:  #DE7C4F;
+}
+
+nav a {
+  color: #5E3822;
+  text-align: center;
+}
+
+.container-fluid{
+  padding: 0;
+}
+
+.navbar-nav {
+  display:table;
+  width:100%;
+  margin: 0;
+}
+.navbar-nav > li {
+  float:none;
+  display:table-cell;
+  text-align:center;
+}

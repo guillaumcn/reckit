@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-2 logo">
+      <img class="img-responsive" src="/assets/images/RecKit.png" alt="RecKit"/>
+    </div>
+
+    <div class="col-md-4 col-md-offset-5">
+      <div class="input-group stylish-input-group">
+        <input type="text" class="form-control" placeholder="Rechercher">
+        <a class="input-group-addon">
+          <button>
+            <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-1">
+      <div class="input-group stylish-input-group">
+        <a [routerLink]="['account']" class="input-group-addon user-icon">
+          <button>
+            <span class="glyphicon glyphicon-user"></span>
+          </button>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <nav class="navbar navbar-default">
+        <div style="min-height: 100%" class="container-fluid">
+          <ul class="nav navbar-nav">
+            <li routerLinkActive="active"><a [routerLink]="['news']"><span class="glyphicon glyphicon-th-list"></span></a></li>
+            <li routerLinkActive="active"><a [routerLink]="['record']"><span class="	glyphicon glyphicon-cd"></span></a></li>
+            <li routerLinkActive="active"><a [routerLink]="['discover']"><span class="glyphicon glyphicon-send"></span></a></li>
+            <li routerLinkActive="active"><a [routerLink]="['data']"><span class="glyphicon glyphicon-folder-open"></span></a></li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
