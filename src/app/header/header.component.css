@@ -1,39 +1,53 @@
+.container {
+  --main-color: grey;
+  --text-color: black;
+}
+
 .row {
   margin-top: 20px;
 }
 
-.logo img{
+h1{
   margin-left: auto;
   margin-right:auto;
+  margin-top: 0;
+  color: var(--text-color);
+  font-size: 300%;
+  font-weight: bold;
+  font-family: Georgia, "DejaVu Serif", Norasi, serif;
+  text-align: center;
 }
 
 .stylish-input-group .input-group-addon{
   background: white !important;
-  border-color: #DE7C4F;
-  color: #DE7C4F;
+  border-color: var(--main-color);
+}
+
+.glyphicon {
+  color: var(--text-color);
 }
 
 .stylish-input-group .form-control{
   border-right:0;
   box-shadow:0 0 0;
-  border-color:#DE7C4F;
-  color: #5E3822;
+  border-color: var(--main-color);
+  color: var(--text-color);
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-  color: #5E3822;
+  color: var(--text-color);
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-  color: #5E3822;
+  color: var(--text-color);
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color: #5E3822;
+  color: var(--text-color);
 }
 :-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: #5E3822;
+  color: var(--text-color);
 }
 :-ms-input-placeholder { /* Microsoft Edge */
-  color: #5E3822;
+  color: var(--text-color);
 }
 
 .stylish-input-group button{
@@ -49,23 +63,24 @@
 
 nav {
   background-color:transparent;
-  border-color: #DE7C4F;
+  border-color: var(--main-color);
 }
 
 .navbar-default .navbar-nav > .active{
-  color: #5E3822;
-  background-color: #DE7C4F;
+  background-color: var(--main-color);
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #5E3822;
-  background:  #DE7C4F;
+  background:  var(--main-color);
 }
 
 nav a {
-  color: #5E3822;
   text-align: center;
+}
+
+.navbar {
+  min-height: auto;
 }
 
 .container-fluid{
