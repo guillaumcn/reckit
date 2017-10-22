@@ -1,45 +1,36 @@
 <div class="container">
   <div class="row">
 
-    <div class="col-md-2">
-      <h1>RecKit</h1>
+    <div class="col s2">
+      <h1><a href="/">RecKit</a></h1>
     </div>
 
-    <div class="col-md-4 col-md-offset-5">
-      <div class="input-group stylish-input-group">
-        <input type="text" class="form-control" placeholder="Rechercher">
-        <a class="input-group-addon">
-          <button>
-            <span class="glyphicon glyphicon-search"></span>
-          </button>
+    <div class="col s2 offset-s7">
+      <form>
+        <div class="input-field">
+          <input id="search" type="search" required>
+          <label class="label-icon" for="search"><i class="fa fa-search" aria-hidden="true"></i></label>
+        </div>
+      </form>
+    </div>
+
+    <div class="col s1">
+        <a [routerLink]="['account']">
+          <a class="waves-effect waves-light btn-large"><i class="fa fa-user" aria-hidden="true"></i></a>
         </a>
-      </div>
     </div>
-
-    <div class="col-md-1">
-      <div class="input-group stylish-input-group">
-        <a [routerLink]="['account']" class="input-group-addon user-icon">
-          <button>
-            <span class="glyphicon glyphicon-user"></span>
-          </button>
-        </a>
-      </div>
-    </div>
-
   </div>
 
   <div class="row">
-    <div class="col-md-12">
-      <nav class="navbar navbar-default">
-        <div style="min-height: 100%" class="container-fluid">
-          <ul class="nav navbar-nav">
-            <li routerLinkActive="active"><a [routerLink]="['news']"><span class="glyphicon glyphicon-th-list"></span></a></li>
-            <li routerLinkActive="active"><a [routerLink]="['record']"><span class="	glyphicon glyphicon-cd"></span></a></li>
-            <li routerLinkActive="active"><a [routerLink]="['discover']"><span class="glyphicon glyphicon-send"></span></a></li>
-            <li routerLinkActive="active"><a [routerLink]="['data']"><span class="glyphicon glyphicon-folder-open"></span></a></li>
+    <div class="col s12">
+
+          <ul class="tabs">
+            <li class="tab col s3" routerLinkActive="active"><a [routerLink]="['news']"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a></li>
+            <li class="tab col s3" routerLinkActive="active"><a [routerLink]="['record']"><i class="fa fa-microphone" aria-hidden="true"></i></a></li>
+            <li class="tab col s3" routerLinkActive="active"><a [routerLink]="['discover']"><i class="fa fa-podcast" aria-hidden="true"></i></a></li>
+            <li class="tab col s3" routerLinkActive="active"><a [routerLink]="['data']"><i class="fa fa-database" aria-hidden="true"></i></a></li>
           </ul>
-        </div>
-      </nav>
+
     </div>
   </div>
 </div>
