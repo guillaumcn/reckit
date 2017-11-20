@@ -1,0 +1,21 @@
+<br/>
+<div class="row">
+  <div class="col s12">
+    <div class="row">
+      <div class="col s6 offset-s3">
+        <a materialize="dropdown" class='dropdown-button btn indigo darken-1 col s12' data-activates='dropdown1'>Statistiques</a>
+        <ul id='dropdown1' class='dropdown-content'>
+          <li><a [routerLink]="['/stats/duration-stat']">Durée</a></li>
+          <li><a [routerLink]="['/stats/average-duration-stat']">Moyennes de durées</a></li>
+          <li><a [routerLink]="['/stats/number-record-stat']">Nombre d'enregistrement</a></li>
+          <li class="divider"></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <router-outlet></router-outlet>
+</div>

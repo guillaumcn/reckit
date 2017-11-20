@@ -1,40 +1,24 @@
-
-.row {
-  margin-top: 20px;
+.brand-logo {
+  margin-left: 20px;
+word-break:keep-all!important;
 }
 
-h1{
-  margin-left: auto;
-  margin-right:auto;
-  margin-top: 0;
-  font-size: 300%;
-  font-weight: bold;
-  font-family: Georgia, "DejaVu Serif", Norasi, serif;
-  text-align: center;
-}
-.input-field input {
-  background: url(http://cssdeck.com/uploads/media/items/4/4yK4Jqj.jpg) 5px center no-repeat #FFF;
-  border: none;
-  color: #666;
-  float: right;
-  font-size: 14px;
-  /*margin: 7px 32px 0 0;*/
-  opacity: 0.9;
-  outline: none;
-  padding: 3px 5px 3px 20px;
-  width: 100px;
-  /* CSS3 */
-  border-radius: 5px;
-  -webkit-transition: 0.3s;
-  -moz-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
+a{
+  cursor: pointer;
 }
 
-.input-field input:hover { opacity: 1}
+@media only screen and (max-width:991px) {
 
-.input-field input:focus {
-  opacity: 1;
-  width: 180px;
-  font-size: 16px;
+  .brand-logo{
+    font-size: 20px !important;
+  }
+
+}
+
+@media only screen and (max-width:450px) {
+
+  .brand-logo{
+    font-size: 15px !important;
+  }
+
 }

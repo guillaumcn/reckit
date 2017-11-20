@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit} from '@angular/core';
+import {AuthService} from '../authentication/auth.service';
+import {Router} from '@angular/router';
+import {ToastService} from '../toast.service';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  sidenavActions = new EventEmitter<any>();
+  sidenavParams = [];
+
+  constructor(public authService: AuthService, private router: Router, private toastService: ToastService) { }
 
   ngOnInit() {
   }
 
+  showSideNav() {
+    this.sidenavParams = ['show'];
+    this.sidenavActions.emit('sideNav');
+  }
+
+  deconnexion() {
+    this.authService.signOut();
+    this.toastService.toast('Deconnexion réussie');
+  }
 }

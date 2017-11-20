@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('reckit-app App', () => {
+describe('mini-projet App', () => {
   let page: AppPage;
 
   beforeEach(() => {

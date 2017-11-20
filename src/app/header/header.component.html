@@ -1,36 +1,20 @@
-<div class="container">
-  <div class="row">
-
-    <div class="col s2">
-      <h1><a href="/">RecKit</a></h1>
-    </div>
-
-    <div class="col s2 offset-s7">
-      <form>
-        <div class="input-field">
-          <input id="search" type="search" placeholder="Recherche..." required>
-          <!--<label class="label-icon" for="search"><i class="fa fa-search" aria-hidden="true"></i></label>-->
-        </div>
-      </form>
-    </div>
-
-    <div class="col s1">
-        <a [routerLink]="['account']">
-          <a class="waves-effect waves-light btn-large"><i class="fa fa-user" aria-hidden="true"></i></a>
-        </a>
-    </div>
+<nav class="indigo darken-1">
+  <div class="nav-wrapper">
+    <a class="brand-logo">Reckit</a>
+    <a materialize="sideNav" [materializeParams]="sidenavParams" [materializeActions]="sidenavActions"
+       data-activates="sidenav" class="button-collapse">
+      <i class="material-icons">menu</i>
+    </a>
+    <ul *ngIf="authService.authenticated" class="right hide-on-med-and-down">
+      <li [routerLinkActive]="['active']"><a [routerLink]="['/records']">Gestion</a></li>
+      <li [routerLinkActive]="['active']"><a [routerLink]="['/stats']">Statistiques</a></li>
+      <li><a (click)="deconnexion()"><i class="material-icons">power_settings_new</i></a></li>
+    </ul>
   </div>
+</nav>
 
-  <div class="row">
-    <div class="col s12">
-
-          <ul class="tabs">
-            <li class="tab col s3"><a [routerLink]="['news']" routerLinkActive="active"><i class="fa fa-newspaper-o" aria-hidden="true"></i></a></li>
-            <li class="tab col s3"><a [routerLink]="['record']" routerLinkActive="active"><i class="fa fa-microphone" aria-hidden="true"></i></a></li>
-            <li class="tab col s3"><a [routerLink]="['discover']" routerLinkActive="active"><i class="fa fa-podcast" aria-hidden="true"></i></a></li>
-            <li class="tab col s3"><a [routerLink]="['data']" routerLinkActive="active"><i class="fa fa-database" aria-hidden="true"></i></a></li>
-          </ul>
-
-    </div>
-  </div>
-</div>
+<ul class="side-nav" id="sidenav">
+  <li [routerLinkActive]="['active']"><a [routerLink]="['/records']">Gestion</a></li>
+  <li [routerLinkActive]="['active']"><a [routerLink]="['/stats']">Statistiques</a></li>
+  <li><a (click)="deconnexion()"><i class="material-icons">power_settings_new</i></a></li>
+</ul>

@@ -1,27 +1,34 @@
-import { NgModule } from '@angular/core';
-import {RouterModule, Routes} from '@angular/router';
-import {NewsComponent} from './news/news.component';
-import {RecordComponent} from './record/record.component';
-import {DiscoverComponent} from './discover/discover.component';
-import {DataComponent} from './data/data.component';
-import {AccountComponent} from './account/account.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
+import {DurationStatComponent} from './records/stats/duration-stat/duration-stat.component';
+import {RecordsComponent} from './records/records.component';
+import {AverageDurationComponent} from './records/stats/averageDuration-stat/average-duration.component';
+import {NumberRecordStatComponent} from './records/stats/numberRecord-stat/number-record-stat.component';
+import {AuthenticationComponent} from './authentication/authentication.component';
+import {AuthGuard} from './auth-guard.service';
+import {StatsComponent} from './records/stats/stats.component';
+
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: 'news', pathMatch: 'full' },
-  {path: 'news', component: NewsComponent },
-  {path: 'record', component: RecordComponent },
-  {path: 'discover', component: DiscoverComponent },
-  {path: 'data', component: DataComponent },
-  {path: 'account', component: AccountComponent }
+  {path: '', redirectTo: 'authentication', pathMatch: 'full'},
+  {path: 'authentication', component: AuthenticationComponent},
+  {path: 'records', component: RecordsComponent, canActivate: [AuthGuard]},
+  {
+    path: 'stats', component: StatsComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard], children: [
+    {path: '', redirectTo: 'duration-stat', pathMatch: 'full'},
+    {path: 'duration-stat', component: DurationStatComponent},
+    {path: 'average-duration-stat', component: AverageDurationComponent},
+    {path: 'number-record-stat', component: NumberRecordStatComponent}
+  ]
+  }
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(appRoutes)
   ],
-  exports: [
-    RouterModule
-  ],
-  declarations: []
+  exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+
+}
