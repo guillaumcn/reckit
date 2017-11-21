@@ -26,6 +26,8 @@ import {ToastService} from './toast.service';
 import { StatsComponent } from './records/stats/stats.component';
 import { LoadingComponent } from './loading/loading.component';
 import {LoadingService} from './loading/loading.service';
+import { CreateAccountComponent } from './create-account/create-account.component';
+import { AuthenticationPageComponent } from './authentication-page/authentication-page.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +42,9 @@ import {LoadingService} from './loading/loading.service';
     NumberRecordStatComponent,
     AuthenticationComponent,
     StatsComponent,
-    LoadingComponent
+    LoadingComponent,
+    CreateAccountComponent,
+    AuthenticationPageComponent
   ],
   imports: [
     BrowserModule,

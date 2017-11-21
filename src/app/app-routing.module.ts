@@ -7,11 +7,12 @@ import {NumberRecordStatComponent} from './records/stats/numberRecord-stat/numbe
 import {AuthenticationComponent} from './authentication/authentication.component';
 import {AuthGuard} from './auth-guard.service';
 import {StatsComponent} from './records/stats/stats.component';
+import { AuthenticationPageComponent } from './authentication-page/authentication-page.component';
 
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'records', pathMatch: 'full'},
-  {path: 'authentication', component: AuthenticationComponent},
+  {path: 'authentication', component: AuthenticationPageComponent},
   {path: 'records', component: RecordsComponent, canActivate: [AuthGuard]},
   {
     path: 'stats', component: StatsComponent, canActivate: [AuthGuard], canActivateChild: [AuthGuard], children: [
