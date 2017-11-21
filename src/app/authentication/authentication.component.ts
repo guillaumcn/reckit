@@ -28,4 +28,9 @@ export class AuthenticationComponent implements OnInit {
     this.loadingService.isLoading = true;
     this.authService.login(this.emailTyped, this.passwordTyped);
   }
+
+  connexionGoogle() {
+    this.loadingService.isLoading = true;
+    this.authService.signInWithGoogle();
+  }
 }

@@ -21,8 +21,14 @@ export class AuthService {
       (user) => {
         if (user) {
           this.userDetails = user;
+          if (user.displayName != null) {
+            this.toastService.toast('Connecté en tant que ' + user.displayName);
+          } else {
+            this.toastService.toast('Connecté en tant que ' + user.email);
+          }
         } else {
           this.userDetails = null;
+          this.toastService.toast('Déconnecté');
         }
       }
     );
@@ -47,11 +53,21 @@ export class AuthService {
       .then(value => {
         this.router.navigate(['/records']);
         this.loadingService.isLoading = false;
-        this.toastService.toast('Connexion réussie');
       })
       .catch(err => {
-
+        this.loadingService.isLoading = false;
       });
+  }
+
+  signInWithGoogle() {
+    this.firebaseAuth.auth.signInWithPopup(
+      new firebase.auth.GoogleAuthProvider()
+    ).then(value => {
+      this.loadingService.isLoading = false;
+      this.router.navigate(['/records']);
+    }).catch(err => {
+      this.loadingService.isLoading = false;
+    });
   }
 
   logout() {
@@ -59,10 +75,7 @@ export class AuthService {
       .auth
       .signOut().then(value => {
       this.router.navigate(['/authentication']);
-      this.toastService.toast('Deconnexion réussie');
-    }, err => {
-
-    });
+    }, err => {});
   }
 
   isLoggedIn() {
