@@ -10,7 +10,7 @@ import {StatsComponent} from './records/stats/stats.component';
 
 
 const appRoutes: Routes = [
-  {path: '', redirectTo: 'authentication', pathMatch: 'full'},
+  {path: '', redirectTo: 'records', pathMatch: 'full'},
   {path: 'authentication', component: AuthenticationComponent},
   {path: 'records', component: RecordsComponent, canActivate: [AuthGuard]},
   {

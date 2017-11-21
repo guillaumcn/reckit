@@ -1,11 +1,11 @@
 <nav class="indigo darken-1">
   <div class="nav-wrapper">
-    <a class="brand-logo">Reckit</a>
-    <a materialize="sideNav" [materializeParams]="sidenavParams" [materializeActions]="sidenavActions"
+    <a class="brand-logo">Mes enregistrements</a>
+    <a *ngIf="authService.isLoggedIn()" materialize="sideNav" [materializeParams]="sidenavParams" [materializeActions]="sidenavActions"
        data-activates="sidenav" class="button-collapse">
       <i class="material-icons">menu</i>
     </a>
-    <ul *ngIf="authService.authenticated" class="right hide-on-med-and-down">
+    <ul *ngIf="authService.isLoggedIn()" class="right hide-on-med-and-down">
       <li [routerLinkActive]="['active']"><a [routerLink]="['/records']">Gestion</a></li>
       <li [routerLinkActive]="['active']"><a [routerLink]="['/stats']">Statistiques</a></li>
       <li><a (click)="deconnexion()"><i class="material-icons">power_settings_new</i></a></li>
@@ -13,7 +13,7 @@
   </div>
 </nav>
 
-<ul class="side-nav" id="sidenav">
+<ul *ngIf="authService.isLoggedIn()" class="side-nav" id="sidenav">
   <li [routerLinkActive]="['active']"><a [routerLink]="['/records']">Gestion</a></li>
   <li [routerLinkActive]="['active']"><a [routerLink]="['/stats']">Statistiques</a></li>
   <li><a (click)="deconnexion()"><i class="material-icons">power_settings_new</i></a></li>

@@ -24,7 +24,6 @@ export class HeaderComponent implements OnInit {
   }
 
   deconnexion() {
-    this.authService.signOut();
-    this.toastService.toast('Deconnexion réussie');
+    this.authService.logout();
   }
 }

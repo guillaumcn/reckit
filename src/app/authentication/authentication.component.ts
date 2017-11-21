@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AuthService} from './auth.service';
 import {Router} from '@angular/router';
-import { toast } from 'angular2-materialize';
-import {LoadingService} from "../loading/loading.service";
+import {LoadingService} from '../loading/loading.service';
 
 @Component({
   selector: 'app-authentication',
@@ -22,18 +21,11 @@ export class AuthenticationComponent implements OnInit {
   }
 
   ngOnInit() {
+
   }
 
   connexion() {
     this.loadingService.isLoading = true;
-    this.authService.emailLogin(this.emailTyped, this.passwordTyped).then(() => {
-        if (this.authService.authenticated) {
-          this.router.navigate(['/records']);
-          this.loadingService.isLoading = false;
-          toast('Connexion réussie', 3000);
-        }
-      }
-    )
-    ;
+    this.authService.login(this.emailTyped, this.passwordTyped);
   }
 }
