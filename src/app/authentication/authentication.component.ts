@@ -1,36 +1,15 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthService} from './auth.service';
-import {Router} from '@angular/router';
-import {LoadingService} from '../loading/loading.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-authentication',
+  selector: 'app-authentication-page',
   templateUrl: './authentication.component.html',
   styleUrls: ['./authentication.component.css']
 })
-
 export class AuthenticationComponent implements OnInit {
 
-  // créé sur Firebase
-  emailTyped = 'reckit.projet@gmail.com';
-  passwordTyped = 'mini-projet';
-
-  constructor(private authService: AuthService,
-              private router: Router,
-              private loadingService: LoadingService) {
-  }
+  constructor() { }
 
   ngOnInit() {
-
   }
 
-  connexion() {
-    this.loadingService.isLoading = true;
-    this.authService.login(this.emailTyped, this.passwordTyped);
-  }
-
-  connexionGoogle() {
-    this.loadingService.isLoading = true;
-    this.authService.signInWithGoogle();
-  }
 }

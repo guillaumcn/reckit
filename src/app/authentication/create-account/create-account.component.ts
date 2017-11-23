@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import {AuthService} from '../authentication/auth.service';
+import {AuthService} from '../auth.service';
 import {Router} from '@angular/router';
-import {LoadingService} from '../loading/loading.service';
+import {LoadingService} from '../../loading/loading.service';
 import {NgForm} from '@angular/forms';
 
 
@@ -15,21 +15,22 @@ export class CreateAccountComponent implements OnInit {
   emailTyped: string;
   passwordTyped: string;
   pass2Typed: string;
-  @ViewChild('f') recordForm: NgForm;
 
   constructor(private authService: AuthService,
-    private router: Router,
     private loadingService: LoadingService) {
   }
 
   ngOnInit() {
   }
 
-  connexion(emailTyped: string, passwordTyped: string, pass2Typed: string) {
-    console.log('recu : ' + this.recordForm.value.emailTyped, + passwordTyped + pass2Typed);
+  createAccount() {
+    // En fait le [(ngModel)]="emailTyped" va faire que quoiqu'il arrive la valeur de ton
+    // input coté html sera la meme que la valeur de this.emailTyped dans le typescript
+
+    // Donc t'as pas besoin de les passer dans les paramètres de la fonction
+
       this.loadingService.isLoading = true;
-      this.authService.signup(emailTyped, passwordTyped, pass2Typed);
-    
+      this.authService.signup(this.emailTyped, this.passwordTyped, this.pass2Typed);
   }
 
 }

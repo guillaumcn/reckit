@@ -19,15 +19,15 @@ import {AngularFireAuthModule} from 'angularfire2/auth';
 import {ChartsModule} from 'ng2-charts';
 import { AverageDurationComponent } from './records/stats/averageDuration-stat/average-duration.component';
 import { NumberRecordStatComponent } from './records/stats/numberRecord-stat/number-record-stat.component';
-import { AuthenticationComponent } from './authentication/authentication.component';
+import { LoginComponent } from './authentication/login/login.component';
 import {AuthService} from './authentication/auth.service';
 import {AuthGuard} from './auth-guard.service';
 import {ToastService} from './toast.service';
 import { StatsComponent } from './records/stats/stats.component';
 import { LoadingComponent } from './loading/loading.component';
 import {LoadingService} from './loading/loading.service';
-import { CreateAccountComponent } from './create-account/create-account.component';
-import { AuthenticationPageComponent } from './authentication-page/authentication-page.component';
+import { CreateAccountComponent } from './authentication/create-account/create-account.component';
+import { AuthenticationComponent } from './authentication/authentication.component';
 
 @NgModule({
   declarations: [
@@ -40,11 +40,11 @@ import { AuthenticationPageComponent } from './authentication-page/authenticatio
     RecordsComponent,
     AverageDurationComponent,
     NumberRecordStatComponent,
-    AuthenticationComponent,
+    LoginComponent,
     StatsComponent,
     LoadingComponent,
     CreateAccountComponent,
-    AuthenticationPageComponent
+    AuthenticationComponent
   ],
   imports: [
     BrowserModule,
