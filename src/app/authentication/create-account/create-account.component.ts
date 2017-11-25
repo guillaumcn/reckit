@@ -22,11 +22,6 @@ export class CreateAccountComponent implements OnInit {
   }
 
   createAccount() {
-    // En fait le [(ngModel)]="emailTyped" va faire que quoiqu'il arrive la valeur de ton
-    // input coté html sera la meme que la valeur de this.emailTyped dans le typescript
-
-    // Donc t'as pas besoin de les passer dans les paramètres de la fonction
-
       this.loadingService.isLoading = true;
       this.authService.signup(this.emailTyped, this.passwordTyped, this.pass2Typed);
   }

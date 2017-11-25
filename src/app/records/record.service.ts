@@ -1,4 +1,4 @@
-import {EventEmitter, Injectable} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Subject} from 'rxjs/Subject';
 import {AngularFireDatabase, AngularFireList} from 'angularfire2/database';
 import {Observable} from 'rxjs/Observable';
@@ -6,7 +6,8 @@ import {ToastService} from '../toast.service';
 import {Record} from './record.model';
 import * as firebase from 'firebase';
 import Reference = firebase.storage.Reference;
-import {LoadingService} from "../loading/loading.service";
+import {LoadingService} from '../loading/loading.service';
+import {AuthService} from '../authentication/auth.service';
 
 @Injectable()
 export class RecordService {
@@ -22,9 +23,19 @@ export class RecordService {
 
   selectOptions: string[] = ['Cours', 'Réunion', 'Conférence', 'Discours'];
 
-  constructor(private db: AngularFireDatabase, private toastService: ToastService, private loadingService: LoadingService) {
-    this.recordListRef = this.db.list<Record>('/records');
+  constructor(private db: AngularFireDatabase, private toastService: ToastService,
+              private loadingService: LoadingService, private authService: AuthService) {
+    this.authService.connectionChanged.subscribe((user) => {
+      if (user != null) {
+        this.initObservable();
+      }
+    });
+    this.initObservable();
     this.storageRef = firebase.storage().ref();
+  }
+
+  initObservable() {
+    this.recordListRef = this.db.list<Record>('/records/' + btoa(this.authService.userDetails.email));
     this.fireBaseObservable = this.recordListRef.snapshotChanges().map(actions => {
       return actions.map(action => {
         const data = action.payload.val() as Record;

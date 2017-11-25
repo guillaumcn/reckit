@@ -8,19 +8,18 @@ import {Router} from '@angular/router';
 import {LoadingService} from '../loading/loading.service';
 import {ToastService} from '../toast.service';
 import {Location} from '@angular/common';
+import {Subject} from "rxjs/Subject";
 
 @Injectable()
 export class AuthService {
-  user: Observable<firebase.User>;
-  private userDetails: firebase.User = null;
-  location: Location;
+  userDetails: firebase.User = null;
+  connectionChanged = new Subject<firebase.User>();
 
 
   constructor(private firebaseAuth: AngularFireAuth, private router: Router,
               private loadingService: LoadingService, private toastService: ToastService) {
-    this.user = firebaseAuth.authState;
 
-    this.user.subscribe(
+    firebaseAuth.authState.subscribe(
       (user) => {
         this.loadingService.isLoading = false;
         if (user) {
@@ -40,11 +39,11 @@ export class AuthService {
         } else {
           this.userDetails = null;
         }
+        this.connectionChanged.next(this.userDetails);
       }
     );
   }
 
-  // ajout d'une condition : il faut que les deux passsword entrés soient les mêmes
   signup(email: string, password: string, pass2: string) {
     if (password === pass2) {
       this.firebaseAuth
