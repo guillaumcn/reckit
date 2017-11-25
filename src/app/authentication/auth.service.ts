@@ -76,7 +76,7 @@ export class AuthService {
   signInWithGoogle() {
     this.firebaseAuth.auth.signInWithPopup(
       new firebase.auth.GoogleAuthProvider()
-    ).then(value => {
+    ).then(user => {
     }).catch(err => {
       this.loadingService.isLoading = false;
     });
