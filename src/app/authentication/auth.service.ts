@@ -22,16 +22,23 @@ export class AuthService {
 
     this.user.subscribe(
       (user) => {
+        this.loadingService.isLoading = false;
         if (user) {
-          this.userDetails = user;
-          if (user.displayName != null) {
-            this.toastService.toast('Connecté en tant que ' + user.displayName);
+          // If user.providerData[0]['providerId'] !== 'password', no need to verify email
+          if (user.providerData[0]['providerId'] !== 'password' || user.emailVerified) {
+            this.userDetails = user;
+            if (user.displayName != null) {
+              this.toastService.toast('Connecté en tant que ' + user.displayName);
+            } else {
+              this.toastService.toast('Connecté en tant que ' + user.email);
+            }
+            this.router.navigate(['/records']);
           } else {
-            this.toastService.toast('Connecté en tant que ' + user.email);
+            this.logout();
+            this.toastService.toast('Merci de valider votre adresse mail');
           }
         } else {
           this.userDetails = null;
-          this.toastService.toast('Déconnecté');
         }
       }
     );
@@ -43,10 +50,8 @@ export class AuthService {
       this.firebaseAuth
         .auth
         .createUserWithEmailAndPassword(email, password)
-        .then(value => {
-          this.login(email, password);
-          // Ici j'ai viré le this.loadingService.isLoading = false; et le this.router.navigate(['/records']);
-          // vu qu'on le fait déjà dans la fonction login
+        .then(user => {
+          user.sendEmailVerification();
           this.toastService.toast('Compte ' + email + ' créé !');
         })
         .catch(err => {
@@ -64,29 +69,22 @@ export class AuthService {
       .auth
       .signInWithEmailAndPassword(email, password)
       .then(value => {
-        this.router.navigate(['/records']);
-        this.loadingService.isLoading = false;
-      })
-      .catch(err => {
-        this.loadingService.isLoading = false;
-      });
+      }).catch(err => {
+      this.loadingService.isLoading = false;
+    });
   }
 
   signInWithGoogle() {
     this.firebaseAuth.auth.signInWithPopup(
       new firebase.auth.GoogleAuthProvider()
     ).then(value => {
-      this.loadingService.isLoading = false;
-      this.router.navigate(['/records']);
     }).catch(err => {
       this.loadingService.isLoading = false;
     });
   }
 
   logout() {
-    this.firebaseAuth
-      .auth
-      .signOut().then(value => {
+    this.firebaseAuth.auth.signOut().then(value => {
       this.router.navigate(['/authentication']);
     }, err => {
     });

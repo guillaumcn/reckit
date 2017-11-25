@@ -1,8 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {AuthService} from '../auth.service';
-import {Router} from '@angular/router';
 import {LoadingService} from '../../loading/loading.service';
-import {NgForm} from '@angular/forms';
 
 
 @Component({
