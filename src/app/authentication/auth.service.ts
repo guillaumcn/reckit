@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
 import {LoadingService} from '../loading/loading.service';
 import {ToastService} from '../toast.service';
 import {Location} from '@angular/common';
-import {Subject} from "rxjs/Subject";
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class AuthService {

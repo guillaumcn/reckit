@@ -1,7 +1,7 @@
-import {Component, EventEmitter, OnInit} from '@angular/core';
-import {AuthService} from '../authentication/auth.service';
-import {Router} from '@angular/router';
-import {ToastService} from '../toast.service';
+import { Component, EventEmitter, OnInit } from '@angular/core';
+import { AuthService } from '../authentication/auth.service';
+import { Router } from '@angular/router';
+import { ToastService } from '../toast.service';
 
 @Component({
   selector: 'app-header',
@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
   constructor(public authService: AuthService, private router: Router, private toastService: ToastService) { }
 
   ngOnInit() {
+
   }
 
   showSideNav() {

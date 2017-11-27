@@ -35,7 +35,7 @@ export class RecordService {
   }
 
   initObservable() {
-    this.recordListRef = this.db.list<Record>('/records/' + this.authService.userDetails.uid);
+    this.recordListRef = this.db.list<Record>('/records/' + btoa(this.authService.userDetails.email));
     this.fireBaseObservable = this.recordListRef.snapshotChanges().map(actions => {
       return actions.map(action => {
         const data = action.payload.val() as Record;
