@@ -12,8 +12,8 @@ import {LoadingService} from '../../loading/loading.service';
 export class LoginComponent implements OnInit {
 
   // créé sur Firebase
-  emailTyped = 'reckit.projet@gmail.com';
-  passwordTyped = 'mini-projet';
+  emailTyped = '';
+  passwordTyped = '';
 
   constructor(private authService: AuthService,
               private router: Router,
